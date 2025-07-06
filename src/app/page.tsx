@@ -53,6 +53,11 @@ const Drugs = () => {
     return formattedDate;
   };
 
+  const clearFilters = () => {
+    setCompany('')
+    setKeyword('')
+  }
+
   return (
     <div>
 
@@ -107,7 +112,7 @@ const Drugs = () => {
                   }
                 </div>
               </div>
-              <Button variant={'destructive'}>Clear Filters</Button>
+              <Button variant={'destructive'} onClick={clearFilters}>Clear Filters</Button>
             </div>
           </div>
           <div>
