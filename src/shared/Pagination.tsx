@@ -72,7 +72,7 @@ const Pagination = (
                     key={p}
                     variant={p === page ? 'default' : 'outline'}
                     onClick={() => setPage(p)}
-                    className={`mx-1 h-8 w-8 text-sm cursor-pointer ${p === page && 'bg-black text-white' }`}
+                    className={`mx-1 h-8 w-8 text-sm cursor-pointer ${p === page && 'bg-black text-white'}`}
                 >
                     {p}
                 </Button>
@@ -84,7 +84,7 @@ const Pagination = (
         <div className="flex flex-col md:flex-row items-center justify-between" >
             <div className='flex items-center gap-2'>
                 <Label className='text-sm'>Results Per Page</Label>
-                <Select value={limit.toString()} onValueChange={(val) => (setLimit(Number(val)), setPage(1))}>
+                <Select value={(limit ?? 10).toString()} onValueChange={(val) => (setLimit(Number(val)), setPage(1))}>
                     <SelectTrigger className="w-[80px]">
                         <SelectValue />
                     </SelectTrigger>
@@ -103,11 +103,11 @@ const Pagination = (
                 {page * limit - limit + 1}-{Math.min(page * limit, totalResults)} of {totalResults} results
             </div>
             <div className="flex items-center space-x-2">
-                <Button variant="outline" className='cursor-pointer h-8 w-8 mx-0' disabled={!hasPreviousPage} onClick={() => setPage(previousPage)}>
+                <Button aria-label='Previous Page' variant="outline" className='cursor-pointer h-8 w-8 mx-0' disabled={!hasPreviousPage} onClick={() => setPage(previousPage)}>
                     <ChevronLeftIcon className="w-4 h-4" />
                 </Button>
                 {renderPageNumbers()}
-                <Button variant="outline" className='cursor-pointer h-8 w-8 mx-0' disabled={!hasNextPage} onClick={() => setPage(nextPage)}>
+                <Button aria-label='Next Page' variant="outline" className='cursor-pointer h-8 w-8 mx-0' disabled={!hasNextPage} onClick={() => setPage(nextPage)}>
                     <ChevronRightIcon className="w-4 h-4" />
                 </Button>
             </div>
